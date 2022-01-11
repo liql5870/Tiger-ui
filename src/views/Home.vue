@@ -6,7 +6,7 @@
       <h2>一个简单易用的UI框架</h2>
       <p class="actions">
         <a href="">Github</a>
-        <a href="">开始</a>
+        <router-link to="/doc">开始</router-link>
       </p>
     </div>
   </div>
@@ -30,7 +30,6 @@ export default {
   background: lightgreen;
   > .actions{
     padding: 8px 0;
-    border: 1px solid red;
     a{
       margin: 0 8px;
       background: #fff;
