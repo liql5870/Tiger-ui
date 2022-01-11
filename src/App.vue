@@ -7,7 +7,8 @@
 
 <script  setup lang="ts">
     import {provide, ref} from 'vue';
-    const menuVisible =ref(true)
+    const width= document.documentElement.clientWidth
+    const menuVisible =ref(width > 500)
     provide('menuVisible',menuVisible)
 
 </script>
