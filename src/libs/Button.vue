@@ -1,13 +1,12 @@
 <template>
-  <div>
-    <Button />
-  </div>
+  <button>
+    <slot />
+  </button>
 </template>
 
 <script setup lang='ts'>
 
 
-import Button from '../libs/Button.vue';
 </script>
 
 <style lang='scss' scoped>

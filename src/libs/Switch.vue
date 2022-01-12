@@ -36,23 +36,25 @@ button{
   &:focus{
     outline: none;
   }
-}
-span{
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  height: $h2;
-  width: $h2;
-  background:white;
-  border-radius: 50%;
-  transition:left 0.25s
-}
-button.checked{
-  background: blue;
   > span{
-    left :calc(100% - #{$h2} - 2px)
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: $h2;
+    width: $h2;
+    background:white;
+    border-radius: 50%;
+    transition:left 0.25s
+  }
+  &.checked{
+    background: blue;
+    > span{
+      left :calc(100% - #{$h2} - 2px)
+    }
   }
 }
+
+
 
 
 </style>
