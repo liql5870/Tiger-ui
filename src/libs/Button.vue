@@ -1,18 +1,28 @@
 <template>
-  <button class="tiger-button" :class=" {[`tiger-theme-${theme}`]:theme} ">
-    <slot />
-  </button>
+    <button v-bind="$attrs" class="tiger-button" :class=" classes">
+      <slot />
+    </button>
+
 
 </template>
 
 <script setup lang='ts'>
 
-import {defineProps} from 'vue';
-
+import {computed, defineProps} from 'vue';
 const props = defineProps({
   theme:{
     type: String,
     default:'button'
+  },
+  size:{
+    type:String,
+    default:'normal'
+  }
+})
+const classes =computed(() =>{
+  return{
+  [`tiger-theme-${props.theme}`]:props.theme,
+  [`tiger-size-${props.size}`]:props.size
   }
 })
 </script>
@@ -59,13 +69,30 @@ $radius:4px;
     &:hover,&:focus{
       color: lighten($blue,10%);
     }
-    &.tiger-theme-text{
-      border-color: transparent;
-      box-shadow: none;
-      color: inherit;
-      &:hover,&:focus{
-        background: darken(white,5%);
-      }
+  }
+  &.tiger-theme-text{
+    border-color: transparent;
+    box-shadow: none;
+    color: inherit;
+    &:hover,&:focus{
+      background: darken(white,5%);
+    }
+    &:hover,&:focus{
+      background:darken(white,5%) ;
+    }
+  }
+  &.tiger-theme-button{
+    &.tiger-size-big{
+      font-size: 24px;
+      height: 48px;
+      padding: 0 16px;
+    }
+  }
+  &.tiger-theme-button{
+    &,tiger-size-small{
+      font-size: 12px;
+      height: 20px;
+      padding: 0 4px;
     }
   }
 }
