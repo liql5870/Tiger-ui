@@ -1,40 +1,83 @@
 <template>
+  <template v-if="visible">
+    <div class="tiger-dialog-overlay" @click="onClickOverlay"></div>
+    <div class="tiger-dialog-wrapper">
+      <div class="tiger-dialog">
+        <header>
+          标题
+          <span @click='close' class="tiger-dialog-close"></span>
+        </header>
+        <main>
+          <p>第一行</p>
+          <p>第二行</p>
+        </main>
+        <footer>
+          <Button level="main" @click="ok">Ok</Button>
+          <Button @click="cancel">Cancel</Button>
+        </footer>
+      </div>
+    </div>
+  </template>
 
-  <div class="tiger-dialog-overlay"></div>
-  <div class="tiger-dialog-wrapper">
-  <div class="tiger-dialog">
-    <header>
-      标题
-      <span class="tiger-dialog-close"></span>
-    </header>
-    <main>
-      <p>第一行</p>
-      <p>第二行</p>
-    </main>
-    <footer>
-      <Button level="main">Ok</Button>
-      <Button>Cancel</Button>
-    </footer>
-  </div>
-  </div>
 </template>
 
 <script setup lang='ts'>
 import Button from './Button.vue';
 
+ const props =defineProps({
+  visible: {
+    type: Boolean,
+    default: false
+  },
+   closeonClickOverlay:{
+    type:Boolean,
+     default:true
+   },
+   ok:{
+    type:Function
+   },
+   cancel:{
+    type:Function
+   }
+});
+
+const emit = defineEmits({
+  'update:visible':String
+})
+const close = () =>{
+  emit("update:visible",false)
+}
+
+const onClickOverlay = () =>{
+  if(props.closeonClickOverlay){
+    close()
+  }
+}
+const ok=()=>{
+  if(props.ok?.()!== false){
+    close()
+  }
+}
+const cancel = () =>{
+  if(props.cancel?.()!== false){
+  close()
+}
+}
 </script>
 
 <style lang='scss' scoped>
 $radius: 4px;
 $border-color: #d9d9d9;
+
 .tiger-dialog {
   background: white;
   border-radius: $radius;
   box-shadow: 0 0 3px fade_out(black, 0.5);
   min-width: 15em;
   max-width: 90%;
+  border: 1px solid red;
 
-  tiger-dialog-overlay {
+  &-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -42,9 +85,10 @@ $border-color: #d9d9d9;
     height: 100%;
     background: fade_out(black, 0.5);
     z-index: 10;
+    border: 1px solid green;
   }
 
-  tiger-dialog-wrapper {
+  &-wrapper {
     position: fixed;
     left: 50%;
     top: 50%;
@@ -71,29 +115,29 @@ $border-color: #d9d9d9;
     text-align: right;
   }
 
-  tiger-dialog-close {
+  &-close {
     position: relative;
     display: inline-block;
     width: 16px;
     height: 16px;
     cursor: pointer;
 
-    tiger-dialog::before,
-    tiger-dialog::after {
+    &::before,
+    &::after {
       content: '';
       position: absolute;
-      height: 1px;
+      height: 2px;
       background: black;
       width: 100%;
       top: 50%;
       left: 50%;
     }
 
-    tiger-dialog::before {
+    &::before {
       transform: translate(-50%, -50%) rotate(-45deg);
     }
-
-    tiger-dialog::after {
+    //
+    &::after {
       transform: translate(-50%, -50%) rotate(45deg);
     }
   }
