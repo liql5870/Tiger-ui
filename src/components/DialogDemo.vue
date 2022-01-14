@@ -3,21 +3,32 @@
     示例1
   </div>
   <Button @click="toggle">toggle</Button>
-  <Dialog v-model:visible="x" :closeonClickOverlay='true' :ok='f1' :cancel='f2'/>
+  <Dialog  v-model:visible="x" :closeonClickOverlay='true' :ok='f1' :cancel='f2'>
+    <template v-slot:title>
+      <p>shit</p>
+    </template>
+  <template v-slot:content>
+    <p>hello</p>
+    <p>world</p>
+
+  </template>
+  </Dialog>
 </template>
 
 <script setup lang='ts'>
 import {ref} from 'vue';
+
 
 const x = ref(false);
 const toggle = () => {
   x.value = !x.value;
 };
 const f1 = () =>{
-  return false
+  return true
 }
 const f2 = () =>{
-  console.log(2)
+  console.log('fuck your')
+  return true
 }
 import Dialog from '../libs/Dialog.vue';
 import Button from '../libs/Button.vue';

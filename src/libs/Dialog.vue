@@ -4,12 +4,11 @@
     <div class="tiger-dialog-wrapper">
       <div class="tiger-dialog">
         <header>
-          标题
+          <slot name="title" />
           <span @click='close' class="tiger-dialog-close"></span>
         </header>
         <main>
-          <p>第一行</p>
-          <p>第二行</p>
+         <slot name="content"/>
         </main>
         <footer>
           <Button level="main" @click="ok">Ok</Button>
@@ -38,6 +37,10 @@ import Button from './Button.vue';
    },
    cancel:{
     type:Function
+   },
+   title:{
+    type:String,
+     default:'标题'
    }
 });
 
@@ -59,7 +62,9 @@ const ok=()=>{
   }
 }
 const cancel = () =>{
-  if(props.cancel?.()!== false){
+  console.log('shit')
+  if(props.cancel && props.cancel()!== false){
+    console.log('damn');
   close()
 }
 }
