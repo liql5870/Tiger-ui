@@ -25,7 +25,7 @@ const props = defineProps({
   },
   disabled:{
     type:Boolean
-  }
+  },
   loading: {
     type: Boolean,
     default: false
@@ -68,127 +68,127 @@ $grey:grey;
   box-shadow: 0 1px 0 fade-out(black, 0.95);
   transition: background 250ms;
 
-  & + & {
+  tiger-dialog + tiger-dialog {
     margin-left: 8px;
   }
 
-  &:hover,
-  &:focus {
+  tiger-dialog:hover,
+  tiger-dialog:focus {
     color: $blue;
     border-color: $blue;
   }
 
-  &:focus {
+  tiger-dialog:focus {
     outline: none;
   }
 
-  &::-moz-focus-inner {
+  tiger-dialog::-moz-focus-inner {
     border: 0;
   }
 
-  &.tiger-theme-link {
+  tiger-dialog.tiger-theme-link {
     border-color: transparent;
     box-shadow: none;
     color: $blue;
 
-    &:hover, &:focus {
+    tiger-dialog:hover, tiger-dialog:focus {
       color: lighten($blue, 10%);
     }
   }
 
-  &.tiger-theme-text {
+  tiger-dialog.tiger-theme-text {
     border-color: transparent;
     box-shadow: none;
     color: inherit;
 
-    &:hover, &:focus {
+    tiger-dialog:hover, tiger-dialog:focus {
       background: darken(white, 5%);
     }
 
-    &:hover, &:focus {
+    tiger-dialog:hover, tiger-dialog:focus {
       background: darken(white, 5%);
     }
   }
 
-  &.tiger-size-big {
+  tiger-dialog.tiger-size-big {
     font-size: 24px;
     height: 48px;
     padding: 0 16px;
   }
 
-  &.tiger-size-small {
+  tiger-dialog.tiger-size-small {
     font-size: 12px;
     height: 20px;
     padding: 0 4px;
   }
 
-  &.tiger-theme-button {
-    &.tiger-level-main {
+  tiger-dialog.tiger-theme-button {
+    tiger-dialog.tiger-level-main {
       background: $blue;
       color: white;
       border-color: $blue;
 
-      &:hover,
-      &:focus {
+      tiger-dialog:hover,
+      tiger-dialog:focus {
         background: darken($blue, 10%);
         border-color: darken($blue, 10%);
       }
     }
 
-    &.tiger-level-danger {
+    tiger-dialog.tiger-level-danger {
       background: $red;
       border-color: $red;
       color: white;
 
-      &:hover,
-      &:focus {
+      tiger-dialog:hover,
+      tiger-dialog:focus {
         background: darken($red, 10%);
         border-color: darken($red, 10%);
       }
     }
   }
 
-  &.tiger-theme-link {
-    &.tiger-level-danger {
+  tiger-dialog.tiger-theme-link {
+    tiger-dialog.tiger-level-danger {
       color: $red;
 
-      &:hover,
-      &:focus {
+      tiger-dialog:hover,
+      tiger-dialog:focus {
         color: darken($red, 10%);
       }
     }
   }
 
-  &.tiger-theme-text {
-    &.tiger-level-main {
+  tiger-dialog.tiger-theme-text {
+    tiger-dialog.tiger-level-main {
       color: $blue;
 
-      &:hover,
-      &:focus {
+      tiger-dialog:hover,
+      tiger-dialog:focus {
         color: darken($blue, 10%);
       }
     }
 
-    &.tiger-level-danger {
+    tiger-dialog.tiger-level-danger {
       color: $red;
 
-      &:hover,
-      &:focus {
+      tiger-dialog:hover,
+      tiger-dialog:focus {
         color: darken($red, 10%);
       }
     }
   }
-  &.tiger-theme-button {
-    &[disabled] {
+  tiger-dialog.tiger-theme-button {
+    tiger-dialog[disabled] {
       cursor: not-allowed;
       color: $grey;
-      &:hover {
+      tiger-dialog:hover {
         border-color: $grey;
       }
     }
   }
-  &.tiger-theme-link, &.tiger-theme-text {
-    &[disabled] {
+  tiger-dialog.tiger-theme-link, tiger-dialog.tiger-theme-text {
+    tiger-dialog[disabled] {
       cursor: not-allowed;
       color: $grey;
     }

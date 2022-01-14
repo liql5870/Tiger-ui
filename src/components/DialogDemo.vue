@@ -1,7 +1,8 @@
 <template>
   <div>
-    <Dialog>
+    示例1
   </div>
+  <Dialog />
 </template>
 
 <script setup lang='ts'>
