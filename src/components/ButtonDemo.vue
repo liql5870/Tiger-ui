@@ -1,5 +1,6 @@
 <template>
   <div>示例</div>
+  <hr>
   <h1>示例1</h1>
   <div>
     <Button>你好</Button>

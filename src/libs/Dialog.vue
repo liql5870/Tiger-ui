@@ -1,21 +1,25 @@
 <template>
   <template v-if="visible">
-    <div class="tiger-dialog-overlay" @click="onClickOverlay"></div>
-    <div class="tiger-dialog-wrapper">
-      <div class="tiger-dialog">
-        <header>
-          <slot name="title" />
-          <span @click='close' class="tiger-dialog-close"></span>
-        </header>
-        <main>
-         <slot name="content"/>
-        </main>
-        <footer>
-          <Button level="main" @click="ok">Ok</Button>
-          <Button @click="cancel">Cancel</Button>
-        </footer>
+    <teleport to="body">
+      <div class=".tiger-button-overlay" @click="onClickOverlay"></div>
+      <div class=".tiger-button-wrapper">
+        <div class=".tiger-button">
+          <header>
+            <slot name="title" />
+            <span @click='close' class=".tiger-button-close"></span>
+          </header>
+          <main>
+            <slot name="content"/>
+          </main>
+          <footer>
+            <Button level="main" @click="ok">Ok</Button>
+            <Button @click="cancel">Cancel</Button>
+          </footer>
+        </div>
+
       </div>
-    </div>
+    </teleport>
+
   </template>
 
 </template>
@@ -62,19 +66,17 @@ const ok=()=>{
   }
 }
 const cancel = () =>{
-  console.log('shit')
-  if(props.cancel && props.cancel()!== false){
-    console.log('damn');
+ props.cancel?.()
   close()
 }
-}
+
 </script>
 
 <style lang='scss' scoped>
 $radius: 4px;
 $border-color: #d9d9d9;
 
-.tiger-dialog {
+..tiger-button {
   background: white;
   border-radius: $radius;
   box-shadow: 0 0 3px fade_out(black, 0.5);

@@ -23,8 +23,8 @@ const props = defineProps({
     type: String,
     default: 'normal'
   },
-  disabled:{
-    type:Boolean
+  disabled: {
+    type: Boolean
   },
   loading: {
     type: Boolean,
@@ -49,8 +49,8 @@ $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
-$red:red;
-$grey:grey;
+$red: red;
+$grey: grey;
 
 .tiger-button {
   box-sizing: border-box;
@@ -68,132 +68,134 @@ $grey:grey;
   box-shadow: 0 1px 0 fade-out(black, 0.95);
   transition: background 250ms;
 
-  tiger-dialog + tiger-dialog {
+  & + & {
     margin-left: 8px;
   }
 
-  tiger-dialog:hover,
-  tiger-dialog:focus {
+  &:hover,
+  &:focus {
     color: $blue;
     border-color: $blue;
   }
 
-  tiger-dialog:focus {
+  &:focus {
     outline: none;
   }
 
-  tiger-dialog::-moz-focus-inner {
+  &::-moz-focus-inner {
     border: 0;
   }
 
-  tiger-dialog.tiger-theme-link {
+  &.tiger-theme-link {
     border-color: transparent;
     box-shadow: none;
     color: $blue;
 
-    tiger-dialog:hover, tiger-dialog:focus {
+    &:hover,
+    &:focus {
       color: lighten($blue, 10%);
     }
   }
 
-  tiger-dialog.tiger-theme-text {
+  &.tiger-theme-text {
     border-color: transparent;
     box-shadow: none;
     color: inherit;
 
-    tiger-dialog:hover, tiger-dialog:focus {
-      background: darken(white, 5%);
-    }
-
-    tiger-dialog:hover, tiger-dialog:focus {
+    &:hover,
+    &:focus {
       background: darken(white, 5%);
     }
   }
 
-  tiger-dialog.tiger-size-big {
+  &.tiger-size-big {
     font-size: 24px;
     height: 48px;
     padding: 0 16px;
   }
 
-  tiger-dialog.tiger-size-small {
+  &.tiger-size-small {
     font-size: 12px;
     height: 20px;
     padding: 0 4px;
   }
 
-  tiger-dialog.tiger-theme-button {
-    tiger-dialog.tiger-level-main {
+  &.tiger-theme-button {
+    &.tiger-level-main {
       background: $blue;
       color: white;
       border-color: $blue;
 
-      tiger-dialog:hover,
-      tiger-dialog:focus {
+      &:hover,
+      &:focus {
         background: darken($blue, 10%);
         border-color: darken($blue, 10%);
       }
     }
 
-    tiger-dialog.tiger-level-danger {
+    &.tiger-level-danger {
       background: $red;
       border-color: $red;
       color: white;
 
-      tiger-dialog:hover,
-      tiger-dialog:focus {
+      &:hover,
+      &:focus {
         background: darken($red, 10%);
         border-color: darken($red, 10%);
       }
     }
   }
 
-  tiger-dialog.tiger-theme-link {
-    tiger-dialog.tiger-level-danger {
+  &.tiger-theme-link {
+    &.tiger-level-danger {
       color: $red;
 
-      tiger-dialog:hover,
-      tiger-dialog:focus {
+      &:hover,
+      &:focus {
         color: darken($red, 10%);
       }
     }
   }
 
-  tiger-dialog.tiger-theme-text {
-    tiger-dialog.tiger-level-main {
+  &.tiger-theme-text {
+    &.tiger-level-main {
       color: $blue;
 
-      tiger-dialog:hover,
-      tiger-dialog:focus {
+      &:hover,
+      &:focus {
         color: darken($blue, 10%);
       }
     }
 
-    tiger-dialog.tiger-level-danger {
+    &.tiger-level-danger {
       color: $red;
 
-      tiger-dialog:hover,
-      tiger-dialog:focus {
+      &:hover,
+      &:focus {
         color: darken($red, 10%);
       }
     }
   }
-  tiger-dialog.tiger-theme-button {
-    tiger-dialog[disabled] {
+
+  &.tiger-theme-button {
+    &[disabled] {
       cursor: not-allowed;
       color: $grey;
-      tiger-dialog:hover {
+
+      &:hover {
         border-color: $grey;
       }
     }
   }
-  tiger-dialog.tiger-theme-link, tiger-dialog.tiger-theme-text {
-    tiger-dialog[disabled] {
+
+  &.tiger-theme-link, &.tiger-theme-text {
+    &[disabled] {
       cursor: not-allowed;
       color: $grey;
     }
   }
-  > .tiger-loadingIndicator{
+
+  > .tiger-loadingIndicator {
     width: 14px;
     height: 14px;
     display: inline-block;
@@ -205,9 +207,14 @@ $grey:grey;
     animation: tiger-spin 1s infinite linear;
   }
 }
+
 @keyframes tiger-spin {
-  0%{transform: rotate(0deg)}
-  100%{transform: rotate(360deg)}
+  0% {
+    transform: rotate(0deg)
+  }
+  100% {
+    transform: rotate(360deg)
+  }
 
 }
 </style>

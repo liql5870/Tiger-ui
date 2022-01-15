@@ -30,7 +30,7 @@ $h2: $h - 4px;
   border-radius: $h/2;
   position: relative;
 
-  tiger-dialog:focus {
+  .tiger-button:focus {
     outline: none;
   }
 
@@ -45,7 +45,7 @@ $h2: $h - 4px;
     transition: left 0.25s
   }
 
-  tiger-dialog.tiger-checked {
+  .tiger-button.tiger-checked {
     background: blue;
 
     > span {

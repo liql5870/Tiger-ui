@@ -8,7 +8,7 @@
     <title>Document</title>
     <style  >
 
-        .tiger-dialog-overlay {
+        .tiger-button-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -18,14 +18,14 @@
             z-index: 10;
         }
 
-        .tiger-dialog-wrapper {
+        ..tiger-button-wrapper {
             position: fixed;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
             z-index: 11;
         }
-        .tiger-dialog {
+        .tiger-button {
             background: white;
             border-radius: 4px;
             box-shadow: 0 0 3px black;
@@ -52,7 +52,7 @@
             text-align: right;
         }
 
-        .tiger-dialog-close {
+        ..tiger-button-close {
             position: relative;
             display: inline-block;
             width: 16px;
@@ -61,8 +61,8 @@
             border: 1px solid black;
         }
 
-        . tiger-dialog::before,
-        .tiger-dialog::after {
+        . .tiger-button::before,
+        ..tiger-button::after {
             content: '';
             position: absolute;
             height: 1px;
@@ -72,23 +72,23 @@
             left: 50%;
         }
 
-        .tiger-dialog::before {
+        ..tiger-button::before {
             transform: translate(-50%, -50%) rotate(-45deg);
         }
 
-        .tiger-dialog::after {
+        ..tiger-button::after {
             transform: translate(-50%, -50%) rotate(45deg);
         }
     </style>
 
 </head>
 <body>
-<div class="tiger-dialog-overlay"></div>
-<div class="tiger-dialog-wrapper">
-    <div class="tiger-dialog">
+<div class=".tiger-button-overlay"></div>
+<div class=".tiger-button-wrapper">
+    <div class=".tiger-button">
         <header>
             标题
-            <span class="tiger-dialog-close"></span>
+            <span class=".tiger-button-close"></span>
         </header>
         <main>
             <p>第一行</p>
