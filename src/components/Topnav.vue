@@ -1,7 +1,11 @@
 <template>
   <div>
     <div class="topnav">
-      <div class="logo" >LOGO</div>
+      <div class="logo" >
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-cat"></use>
+        </svg>
+      </div>
       <ul class="menu">
         <li>菜单1</li>
         <li>菜单2</li>
@@ -23,6 +27,7 @@ const toggleMenu = () => {
 
 <style lang='scss' scoped>
 .topnav {
+  color: #38ada7;
   display: flex;
   padding: 16px;
   position: fixed;
@@ -33,9 +38,13 @@ const toggleMenu = () => {
   justify-content: center;
   align-items: center;
   > .logo {
-    border: 1px solid red;
     max-width: 6em;
     margin-right: auto;
+    > svg{
+      width: 32px;
+      height: 32px;
+    }
+
   }
 
   > .menu {
