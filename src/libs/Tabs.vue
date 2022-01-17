@@ -6,7 +6,7 @@
            :class="{selected: t === selected}"
            v-for="(t,index) in title"
            :key="index"
-           :ref="el =>{if(el) navItems[index] =el}"
+           :ref="el =>{if(t === selected) selectedItem=el}"
 
       >{{ t }}
       </div>
@@ -21,29 +21,27 @@
 
 <script setup lang='ts'>
 import Tab from './Tab.vue';
-import {computed, onMounted, onUpdated, ref, useSlots} from 'vue';
-import {types} from 'sass';
+import {computed, onMounted, ref, useSlots, watchEffect} from 'vue';
 
 const props = defineProps({
   selected: {
     type: String
   }
 });
-const navItems = ref<HTMLDivElement[]>([]);
+const selectedItem = ref<HTMLDivElement>(null)
 const indicator = ref<HTMLDivElement>(null);
 const container = ref<HTMLDivElement>(null);
-const divs = navItems.value;
-const x = ()=>{
-  const result = divs.filter(div => div.classList.contains('selected'))[0];
-  const {width} = result.getBoundingClientRect();
-  indicator.value.style.width = width + 'px';
-  const {left: left1} = container.value.getBoundingClientRect();
-  const {left: left2} = result.getBoundingClientRect();
-  const left = left2 - left1;
-  indicator.value.style.left = left + 'px';
-}
-onMounted(() => {x()});
-onUpdated(() => {x()});
+
+onMounted(()=>{
+  watchEffect(()=>{
+    const {width} = selectedItem.value.getBoundingClientRect();
+    indicator.value.style.width = width + 'px';
+    const {left: left1} = container.value.getBoundingClientRect();
+    const {left: left2} = selectedItem.value.getBoundingClientRect();
+    const left = left2 - left1;
+    indicator.value.style.left = left + 'px';})
+})
+
 const emit = defineEmits({'update:selected': String});
 const defaults = useSlots().default();
 defaults.forEach((tag) => {
