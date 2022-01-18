@@ -98,14 +98,13 @@ aside {
 
   > ol {
     > li {
-      padding: 4px 16px;
-      display: block;
-
-      。router-link-active {
-        color: red;
-
+      >a{
+        padding: 4px 16px;
+        display: block;
       }
-
+      .router-link-active {
+        background:white;
+      }
     }
   }
 }
