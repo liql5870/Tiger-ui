@@ -62,9 +62,7 @@ const onClick = () => {
   console.log('fuck');
 };
 </script>
-<script>
 
-</script>
 <style lang='scss' scoped>
 
 
