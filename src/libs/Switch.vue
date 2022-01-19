@@ -1,22 +1,25 @@
 <template>
-  <button class="tiger-switch" @click="toggle" :class="{'tiger-checked':value}">
+  <button class="tiger-switch"  @click="toggle" :class="{'tiger-checked':value}">
     <span></span>
   </button>
 </template>
 
-<script lang='ts'>
+<script  setup lang='ts'>
 
-export default {
-  props: {
-    value: Boolean
-  },
-  setup(props, context) {
-    const toggle = () => {
-      context.emit('update:value', !props.value);
-    };
-    return {toggle};
+import {defineProps,defineEmits} from 'vue';
+
+const props = defineProps({
+  value:{
+    type:Boolean
   }
-};
+})
+const emits = defineEmits({"update:value":String})
+
+const toggle = () =>{
+  emits('update:value', !props.value);
+}
+
+
 </script>
 
 <style lang='scss'>
@@ -30,7 +33,7 @@ $h2: $h - 4px;
   border-radius: $h/2;
   position: relative;
 
-  .tiger-button:focus {
+  &:focus {
     outline: none;
   }
 
@@ -45,7 +48,7 @@ $h2: $h - 4px;
     transition: left 0.25s
   }
 
-  .tiger-button.tiger-checked {
+  &.tiger-checked {
     background: blue;
 
     > span {
