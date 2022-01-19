@@ -27,7 +27,7 @@ const toggleMenu = () => {
 };
 defineProps({
   toggleMenuButtonVisible:{
-    type:Boolean,
+    type:String,
     default:false
   }
 })
