@@ -8,7 +8,7 @@
       </router-link>
       <ul class="menu">
        <li>
-         <router-link to="/doc">文档</router-link>
+         <router-link to="/doc/intro">文档</router-link>
        </li>
       </ul>
       <svg v-if='toggleMenuButtonVisible' class="toggleAside" @click="toggleMenu">
@@ -35,20 +35,27 @@ defineProps({
 </script>
 
 <style lang='scss' scoped>
+$color:#f792b5;
+$hover-color: #f4f4f4;
 .topnav {
-  color: #38ada7;
+  background: linear-gradient(135deg, rgba(2,0,36,1) 0%, rgba(167,211,253,1) 0%, rgba(186,190,248,1) 100%);
+  box-shadow:0 0 1px #00000040;
+  color: $color;
   display: flex;
   padding: 16px;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 50;
   justify-content: center;
   align-items: center;
   > .logo {
     max-width: 6em;
     margin-right: auto;
+    &:hover{
+      color: $hover-color;
+    }
     > svg{
       width: 32px;
       height: 32px;
@@ -62,7 +69,10 @@ defineProps({
     flex-wrap: nowrap;
 
     > li {
-      margin: 0 1em
+      margin: 0 1em;
+      &:hover{
+        color: $hover-color;
+      }
     }
   }
   >.toggleAside{

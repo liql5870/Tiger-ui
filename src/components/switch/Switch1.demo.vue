@@ -2,6 +2,7 @@
 常规用法
 </demo>
 
+
 <template>
  <Switch v-model:value="bool" />
 </template>
@@ -12,7 +13,7 @@ import {ref} from 'vue';
 const bool = ref(false);
 
 
-import Switch from '../libs/Switch.vue';
+import Switch from '../../libs/Switch.vue';
 </script>
 
 <style lang='scss' scoped>

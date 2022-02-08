@@ -6,7 +6,7 @@
       <h2>一个简单易用的UI框架</h2>
       <p class="actions">
         <a href="">Github</a>
-        <router-link to="/doc">开始</router-link>
+        <router-link to="/doc/intro">开始</router-link>
       </p>
     </div>
   </div>
@@ -48,9 +48,9 @@ export default {
 
 <style lang='scss' scoped>
 $green: #00a7aa;
-$color: #38ada7;
+$color: #f4f4f4;
 .topnavAndBanner {
-  background: linear-gradient(145deg, rgba(227, 255, 253, 1) 0%, rgba(183, 233, 230, 1) 100%);
+  background: linear-gradient(135deg, rgba(2,0,36,1) 0%, rgba(167,211,253,1) 0%, rgba(186,190,248,1) 100%);
   clip-path: ellipse(80% 60% at 50% 40%);
 }
 .banner {
@@ -65,7 +65,7 @@ $color: #38ada7;
     padding: 8px 0;
 
     a {
-      background: $green;
+      background: #f792b5;
       color: white;
       margin: 0 8px;
       display: inline-block;
@@ -74,19 +74,29 @@ $color: #38ada7;
       text-decoration: none;
 
       &:hover {
-        background: #417270;
+        background: #efabc4 ;
       }
     }
   }
 }
 .features {
   margin: 64px auto;
-  width: 400px;
+  padding: 0 16px;
   @media(min-width: 800px) {
     width: 800px;
+    > ul{
+      >li{
+        width: 50%;
+      }
+    }
   }
   @media(min-width: 1200px) {
     width: 1200px;
+    > ul{
+      >li{
+        width:33.333%
+      }
+    }
   }
 
   > ul {
@@ -94,7 +104,6 @@ $color: #38ada7;
     flex-wrap: wrap;
 
     > li {
-      width: 400px;
       margin: 16px 0;
       display: grid;
       justify-content: start;

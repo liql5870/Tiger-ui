@@ -12,7 +12,7 @@ import {ref} from 'vue';
 const bool = ref(false);
 
 
-import Switch from '../libs/Switch.vue';
+import Switch from '../../libs/Switch.vue';
 </script>
 
 <style lang='scss' scoped>
