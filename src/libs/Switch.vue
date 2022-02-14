@@ -1,5 +1,5 @@
 <template>
-  <button class="tiger-switch"  @click="toggle" :class="{'tiger-checked':value}">
+  <button class="tiger-switch"  @click="toggle"  :class="{'tiger-checked':value}">
     <span></span>
   </button>
 </template>
@@ -13,6 +13,7 @@ const props = defineProps({
     type:Boolean
   }
 })
+
 const emits = defineEmits({"update:value":String})
 
 const toggle = () =>{

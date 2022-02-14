@@ -54,7 +54,8 @@ $hover-color: #f4f4f4;
     max-width: 6em;
     margin-right: auto;
     &:hover{
-      color: $hover-color;
+      //color: $hover-color;
+      border-bottom: 2px solid $color;
     }
     > svg{
       width: 32px;
@@ -71,7 +72,7 @@ $hover-color: #f4f4f4;
     > li {
       margin: 0 1em;
       &:hover{
-        color: $hover-color;
+        border-bottom: 2px solid $color;
       }
     }
   }

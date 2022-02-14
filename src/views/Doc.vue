@@ -75,7 +75,6 @@ const menuVisible = inject<Ref<boolean>>('menuVisible');
   }
 
   > .content {
-    border: 1px solid red;
     display: flex;
     flex-grow: 1;
     padding-left: 256px;
