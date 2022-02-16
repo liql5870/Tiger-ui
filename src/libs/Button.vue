@@ -24,7 +24,8 @@ const props = defineProps({
     default: 'normal'
   },
   disabled: {
-    type: Boolean
+    type: Boolean,
+    default:false
   },
   loading: {
     type: Boolean,

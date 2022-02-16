@@ -20,7 +20,7 @@
 import Dialog from '../../libs/Dialog.vue';
 import Button from '../../libs/Button.vue';
 import {ref} from 'vue';
-import {openDialog} from '../../libs/openDialog';
+
 
 const x = ref(false);
 const toggle = () => {

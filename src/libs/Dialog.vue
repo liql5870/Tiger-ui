@@ -6,73 +6,69 @@
         <div class=".tiger-button">
           <header>
             <slot name="title" />
-            <span @click='close' class=".tiger-button-close"></span>
+            <span @click="close" class=".tiger-button-close"></span>
           </header>
           <main>
-            <slot name="content"/>
+            <slot name="content" />
           </main>
           <footer>
-            <Button level="main" @click="ok">Ok</Button>
-            <Button @click="cancel">Cancel</Button>
+            <Button level="main" @click="onClickOk">Ok</Button>
+            <Button @click="onClickCancel">Cancel</Button>
           </footer>
         </div>
-
       </div>
     </teleport>
-
   </template>
-
 </template>
 
-<script setup lang='ts'>
-import Button from './Button.vue';
+<script setup lang="ts">
+import Button from "./Button.vue";
 
- const props =defineProps({
+const props = defineProps({
   visible: {
     type: Boolean,
-    default: false
+    default: false,
   },
-   closeonClickOverlay:{
-    type:Boolean,
-     default:true
-   },
-   ok:{
-    type:Function
-   },
-   cancel:{
-    type:Function
-   },
-   title:{
-    type:String,
-     default:'标题'
-   }
+  closeonClickOverlay: {
+    type: Boolean,
+    default: true,
+  },
+  ok: {
+    type: Function,
+  },
+  cancel: {
+    type: Function,
+  },
+  title: {
+    type: String,
+    default: "标题",
+  },
 });
 
 const emit = defineEmits({
-  'update:visible':String
-})
-const close = () =>{
-  emit("update:visible",false)
-}
+  "update:visible": String,
+});
+const close = () => {
+  emit("update:visible", false);
+};
 
-const onClickOverlay = () =>{
-  if(props.closeonClickOverlay){
-    close()
+const onClickOverlay = () => {
+  if (props.closeonClickOverlay) {
+    close();
   }
-}
-const ok=()=>{
-  if(props.ok?.()!== false){
-    close()
+};
+const onClickOk = () => {
+  if (props.ok && props.ok() !== false) {
+    close();
   }
-}
-const cancel = () =>{
- props.cancel?.()
-  close()
-}
-
+};
+const onClickCancel = () => {
+  props.cancel && props.cancel();
+  close();
+};
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 $radius: 4px;
 $border-color: #d9d9d9;
 
@@ -82,7 +78,6 @@ $border-color: #d9d9d9;
   box-shadow: 0 0 3px fade_out(black, 0.5);
   min-width: 15em;
   max-width: 90%;
-  border: 1px solid red;
 
   &-overlay {
     position: fixed;
@@ -91,7 +86,7 @@ $border-color: #d9d9d9;
     width: 100%;
     height: 100%;
     background: fade_out(black, 0.5);
-    z-index: 10;
+    z-index: 40;
     border: 1px solid green;
   }
 
@@ -100,7 +95,7 @@ $border-color: #d9d9d9;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    z-index: 11;
+    z-index: 50;
   }
 
   > header {
@@ -131,7 +126,7 @@ $border-color: #d9d9d9;
 
     &::before,
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       height: 2px;
       background: black;

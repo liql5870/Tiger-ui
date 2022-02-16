@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <Topnav toggleMenuButtonVisible='true' class="nav"/>
+    <Topnav toggleMenuButtonVisible="true" class="nav" />
     <div class="content">
       <aside v-show="menuVisible">
         <h2 class="topsize">文档</h2>
@@ -14,7 +14,6 @@
           <li>
             <router-link to="/doc/get-started">开始使用</router-link>
           </li>
-
         </ol>
         <h2>组件</h2>
         <ol>
@@ -33,40 +32,36 @@
         </ol>
       </aside>
       <main>
-        <router-view/>
+        <router-view />
       </main>
     </div>
   </div>
 </template>
 
-<script setup lang='ts'>
-let width
-onMounted(()=>{
-   window.onresize =()=>{
-     width = ref(document.documentElement.clientWidth)
-   }
-})
- watch(width,(newValue,oldValue)=>{
-   console.log(newValue,oldValue)
- })
+<script setup lang="ts">
+let width;
+onMounted(() => {
+  window.onresize = () => {
+    width = ref(document.documentElement.clientWidth);
+  };
+});
+watch(width, (newValue, oldValue) => {
+  console.log(newValue, oldValue);
+});
 
-import Topnav from '../components/Topnav.vue';
-import {computed, inject, onMounted, onUpdated, ref, Ref, watch} from 'vue';
+import Topnav from "../components/Topnav.vue";
+import { computed, inject, onMounted, onUpdated, ref, Ref, watch } from "vue";
 
-const menuVisible = inject<Ref<boolean>>('menuVisible');
-
-
-
+const menuVisible = inject<Ref<boolean>>("menuVisible");
 </script>
 
-<style lang='scss' scoped>
-
+<style lang="scss" scoped>
 .layout {
   display: flex;
   flex-direction: column;
   height: 100vh;
   z-index: 30;
-  ::v-deep .topnav{
+  ::v-deep .topnav {
     background: #ffffff;
     box-shadow: 0 0 1px rgb(0 0 0 / 25%);
   }
@@ -78,18 +73,18 @@ const menuVisible = inject<Ref<boolean>>('menuVisible');
     display: flex;
     flex-grow: 1;
     padding-left: 256px;
-    margin: 30px 200px 0 0;
-    //@media(max-width:1200px){
-    //  margin: 0 100px;
-    //}
-    @media(min-width:600px){
-       aside{
+    margin: 30px 0 0 0;
+    @media(max-width:1200px){
+      margin: 0 ;
+    }
+    @media (min-width: 600px) {
+      aside {
         display: inline-block;
       }
     }
-    //@media(max-width: 500px) {
-    //  padding-left: 0;
-    //}
+    @media(max-width: 500px) {
+      padding-left: 0;
+    }
 
     > aside {
       flex-shrink: 0;
@@ -102,20 +97,18 @@ const menuVisible = inject<Ref<boolean>>('menuVisible');
       top: 0;
       left: 0;
       height: 100%;
-      z-index:30;
+      z-index: 30;
       > h2 {
         margin: 4px 0;
         padding: 0 26px;
         font-weight: 700;
         font-size: 18px;
-
       }
 
       > ol {
         > li {
-          &:hover{
+          &:hover {
             background: RGBA(244, 192, 212, 0.8);
-          ;
           }
           > a {
             padding: 4px 36px;
@@ -138,9 +131,8 @@ const menuVisible = inject<Ref<boolean>>('menuVisible');
       padding: 16px;
       background: #fff;
       overflow: auto;
-      transition:all 250ms;
+      transition: all 250ms;
     }
   }
 }
-
 </style>
