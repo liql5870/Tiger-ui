@@ -1,18 +1,27 @@
 <template>
   <template v-if="visible">
+<!--    当visible 为true时候，整个dialog组件开始显示出来-->
     <teleport to="body">
-      <div class=".tiger-button-overlay" @click="onClickOverlay"></div>
-      <div class=".tiger-button-wrapper">
-        <div class=".tiger-button">
+<!--      这一个属于遮罩层，点击click会触发onclickOverlay事件-->
+      <div class="tiger-dialog-overlay" @click="onClickOverlay"></div>
+<!--      // 这个属于dialog的整体正常应该是全部显示出来的。-->
+      <div class="tiger-dialog-wrapper">
+        <div class="tiger-dialog">
+<!--          头部标题，接受父组件传递过来值，使用了slot插槽-->
           <header>
+<!--            插槽，谁绑定了title，谁就出现再这里-->
             <slot name="title" />
-            <span @click="close" class=".tiger-button-close"></span>
+            <span @click="close" class="tiger-dialog-close"></span>
           </header>
+<!--          主要内容，也是使用了具名插槽-->
           <main>
             <slot name="content" />
           </main>
+<!--          这个是dialog组件结尾时用,可以直接现实的按钮-->
           <footer>
+<!--            点击会调用click事件，会触发方法onclickOk-->
             <Button level="main" @click="onClickOk">Ok</Button>
+
             <Button @click="onClickCancel">Cancel</Button>
           </footer>
         </div>
@@ -48,22 +57,28 @@ const props = defineProps({
 const emit = defineEmits({
   "update:visible": String,
 });
+// close方法会向父元素提交事件“update:visible”来更新visible的值为false
 const close = () => {
   emit("update:visible", false);
 };
-
+// onclickoverlay方法，如果得到的closeonclickoverlys的值为true。则执行close（）方法，
+// 关键是这个closeonclickly的值是如何获取的，是通过什么方式传递过来的。
 const onClickOverlay = () => {
   if (props.closeonClickOverlay) {
     close();
   }
 };
+// 这个方法表示的是，如果属性的OK且调用属性OK值不等于false，也就是如果等于true的话，即props.ok 和props.ok()都为true的话，执行close()函数
 const onClickOk = () => {
-  if (props.ok && props.ok() !== false) {
-    close();
-  }
-};
+  close();
+  // if (props.ok && props.ok() !== false) {
+  //
+  // };
+
+}
+
 const onClickCancel = () => {
-  props.cancel && props.cancel();
+  // props.cancel && props.cancel();
   close();
 };
 </script>
@@ -72,7 +87,7 @@ const onClickCancel = () => {
 $radius: 4px;
 $border-color: #d9d9d9;
 
-.tiger-button {
+.tiger-dialog {
   background: white;
   border-radius: $radius;
   box-shadow: 0 0 3px fade_out(black, 0.5);
@@ -86,8 +101,7 @@ $border-color: #d9d9d9;
     width: 100%;
     height: 100%;
     background: fade_out(black, 0.5);
-    z-index: 40;
-    border: 1px solid green;
+    z-index: 50;
   }
 
   &-wrapper {
@@ -124,6 +138,7 @@ $border-color: #d9d9d9;
     height: 16px;
     cursor: pointer;
 
+    //用这种方法去写出了一个叉号，包含下面的方法都是的。
     &::before,
     &::after {
       content: "";

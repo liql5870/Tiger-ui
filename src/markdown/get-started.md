@@ -20,7 +20,7 @@ import {Button, Tabs, Switch, Dialog} from "Tiger-ui"
   </div>
 </template>
 <script>
-import {Button, Tabs, Switch, Dialog} from "king-ui"
+import {Button, Tabs, Switch, Dialog} from "Tiger-ui"
 export default {
   components: {Button}
 }

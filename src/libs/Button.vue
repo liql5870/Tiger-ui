@@ -1,5 +1,6 @@
 <template>
-  <button class="tiger-button" :class=" classes">
+<!--  button按钮，绑定classes样式-->
+  <button class="tiger-button" :class=" classes" :disabled="disabled">
     <span v-if="loading" class="tiger-loadingIndicator"></span>
     <slot/>
   </button>

@@ -61,7 +61,7 @@ const menuVisible = inject<Ref<boolean>>("menuVisible");
   flex-direction: column;
   height: 100vh;
   z-index: 30;
-  ::v-deep .topnav {
+  :deep(.topnav)  {
     background: #ffffff;
     box-shadow: 0 0 1px rgb(0 0 0 / 25%);
   }
